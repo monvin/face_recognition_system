@@ -1,0 +1,31 @@
+
+
+Accuracy=(TP + TN)/(TP + TN + FP + FN)
+Sensitivity = TP / TP + FN
+Specificity = TN / TN + FP
+Precision = TP / TP + FP
+True-Positive Rate = TP / TP + FN
+False-Positive Rate = FP / FP + TN
+True-Negative Rate = TN / TN + FP
+False-Negative Rate = FN / FN + TP
+
+300 photos for testing 50 photos each for 4 of us 100 random persons photo
+
+TP=200
+TN=96
+FP=4
+FN=0
+
+Accuracy=98.66
+
+Sensitivity/TPR=100
+
+Specificity/TNR=96
+
+Precision=98.04
+
+FPR=0.04
+
+FNR=0
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>FACE RECOGNITION SYSTEM</title>
+    {% load static from staticfiles %}
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+   
+    <link rel="stylesheet" href="{% static "/font-awesome-4.5.0/css/font-awesome.min.css" %}">                
+   
+    <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">                                      
+
+    <link rel="stylesheet" href="{% static "/css/hero-slider-style.css" %}">                              
+
+    <link rel="stylesheet" href="{% static "/css/magnific-popup.css" %}">                                 
+
+    <link rel="stylesheet" href="{% static "/css/tooplate-style.css"%}">                                   
+
+  <style>
+#container {
+	margin: 0px auto;
+	width: 500px;
+	height: 375px;
+	border: 10px #333 solid;
+}
+#videoElement {
+	width: 500px;
+	height: 375px;
+	background-color: #666;
+}
+</style>
+</head>
+
+<body>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>
