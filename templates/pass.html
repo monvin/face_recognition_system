@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Number of faces: {{ request.session.tf }}</h4>
+
+<h4>Identified faces: {{ request.session.idf }}</h4>
+
+<h4>Unidentified faces: {{ request.session.unidf }}</h4>
+
+<h4>Names: {{ request.session.uname }}</h4>
+
+<h4>Minimum Distances: {{ request.session.distar }}</h4>
+
+
+{% load static from staticfiles %}
+<img src="{% static "/result.jpg" %}"/>  
+
+<br>
+	
+
+
+ <footer class="tm-footer">
+            <a href="{% url 'logout' %}">Home</a><br>
+                <div class="tm-social-icons-container text-xs-center">
+                    <a href="#" class="tm-social-link"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="tm-social-link"><i class="fa fa-google-plus"></i></a>
+                    <a href="#" class="tm-social-link"><i class="fa fa-twitter"></i></a>
+                    
+                    <a href="#" class="tm-social-link"><i class="fa fa-linkedin"></i></a>
+                </div>
+                
+               <center> <p class="tm-copyright-text">Copyright &copy; 2019 Basil,Bastian,Kevin,Jishnu</p></center>
+
+            </footer> 
+
+ 
+{% endblock %}
