@@ -46,7 +46,10 @@
             </div> 
 <br><br><br><br>
 <h1>{{ request.session.mes}}</h1>
- 
+ {% load static from staticfiles %}
+<img src="{% static "/test.jpg" %}"/>  
+
+<br>
 <footer class="tm-footer">
             
                 <div class="tm-social-icons-container text-xs-center">

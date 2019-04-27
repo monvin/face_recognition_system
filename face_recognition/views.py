@@ -136,6 +136,50 @@ for cls in dataset:
 
 
 
+def who_is_it_min(image_path, database, model):
+    """
+   
+    
+    Arguments:
+    image_path -- path to an image
+    database -- database containing image encodings along with the name of the person on the image
+    model -- your Inception model instance in Keras
+    
+    Returns:
+    min_dist -- the minimum distance between image_path encoding and the encodings from the database
+    identity -- string, the name prediction for the person on image_path
+    """
+    
+    
+    
+    ## Step 1: Compute the target "encoding" for the image. Use img_to_encoding() see example above. ## (≈ 1 line)
+    encoding = img_to_encoding(image_path,model)
+    
+    ## Step 2: Find the closest encoding ##
+    
+    # Initialize "min_dist" to a large value, say 100 (≈1 line)
+    min_dist = 100
+    
+    # Loop over the database dictionary's names and encodings.
+    for (name, db_enc) in database.items():
+        
+        # Compute L2 distance between the target "encoding" and the current "emb" from the database. (≈ 1 line)
+        dist = np.linalg.norm(encoding-database[name])
+
+        # If this distance is less than the min_dist, then set min_dist to dist, and identity to name. (≈ 3 lines)
+        if dist<min_dist:
+            min_dist = dist
+            identity = name
+
+    ### END CODE HERE ###
+    remove_digits = str.maketrans('', '', digits)
+    result_name = identity.translate(remove_digits)    
+
+
+    #os.remove("temp.jpg")      
+    return min_dist, result_name
+
+
 
 def who_is_it(image_path, database, model):
     """
@@ -238,7 +282,7 @@ def face_recognition(request):
 			cv2.imwrite("temp"+str(count)+".jpg", face_img)
 			
 	
-			min_dist, identity=who_is_it("temp"+str(count)+".jpg", database, FRmodel)
+			min_dist, identity=who_is_it_min("temp"+str(count)+".jpg", database, FRmodel)
 			dist_array.append(min_dist)
 			name_array.append(identity)
 			count=count+1
@@ -254,7 +298,7 @@ def face_recognition(request):
 
 		fm=cv2.imread("temp"+str(i+1)+".jpg")
 		fm= cv2.resize(fm,(int(400),int(400)))
-		if dist_array[i] > 0.61:
+		if dist_array[i] > 0.5:
 			name_array[i]="Can't Identify"
 		else:
 			id_faces=id_faces+1
